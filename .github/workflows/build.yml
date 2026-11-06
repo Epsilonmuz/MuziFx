@@ -56,6 +56,7 @@ jobs:
           B="${{ matrix.folder }}/Builds/MacOSX/build/Release"
           mkdir -p dist
           cp -R "$B/${{ matrix.name }}.vst3" "$B/${{ matrix.name }}.component" "$B/${{ matrix.name }}.app" dist/
+          echo "Architectures:"; for f in dist/*.vst3/Contents/MacOS/* dist/*.component/Contents/MacOS/*; do lipo -archs "$f"; done || true
           cp README.md dist/
           cat > dist/INSTALL.txt <<TXT
           1. Copy "${{ matrix.name }}.vst3" to ~/Library/Audio/Plug-Ins/VST3/
