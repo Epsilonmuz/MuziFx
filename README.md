@@ -15,7 +15,7 @@ Everything is inside this folder, including JUCE 9.0.5 (in `JUCE/`), so nothing 
 4. Xcode copies the plugins to `~/Library/Audio/Plug-Ins/VST3/` and `Components/` (AU). Rescan in your DAW.
 5. Same for **`MuziGlue/MuziGlue.jucer`**.
 
-You can also skip Projucer and open `MuziEQ/Builds/MacOSX/Muzi EQ.xcodeproj` directly. Projects: JUCE 9.0.5, macOS 12.0 target, Universal (Apple Silicon + Intel), VST3 + AU + Standalone. Windows: `Builds/VisualStudio2022`.
+You can also skip Projucer and open `MuziEQ/Builds/MacOSX/Muzi EQ.xcodeproj` directly. Projects: JUCE 9.0.5, macOS 12.0 target, Apple Silicon + Intel (Xcode standard architectures), VST3 + AU + Standalone. Windows: `Builds/VisualStudio2022`.
 Keep the folder structure as is: both projects use the shared `Source/` and `JUCE/` folders.
 
 CMake alternative: `cmake -B build -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release` (downloads JUCE 9.0.5). Test tools: add `-DMZ_BUILD_TESTS=ON`.

@@ -26,7 +26,7 @@ jobs:
         run: |
           xcodebuild -project "${{ matrix.folder }}/Builds/MacOSX/${{ matrix.name }}.xcodeproj" \
                      -target "${{ matrix.name }} - All" -configuration Release \
-                     CODE_SIGN_IDENTITY="-" -quiet build
+                     ARCHS="arm64 x86_64" ONLY_ACTIVE_ARCH=NO CODE_SIGN_IDENTITY="-" -quiet build
 
       - name: Validate with pluginval
         run: |
