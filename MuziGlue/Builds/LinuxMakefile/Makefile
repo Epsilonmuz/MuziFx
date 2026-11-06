@@ -61,7 +61,7 @@ ifeq ($(CONFIG),Debug)
   JUCE_CPPFLAGS_VST3_MANIFEST_HELPER := 
   JUCE_TARGET_VST3_MANIFEST_HELPER := juce_vst3_helper
 
-  JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -g -ggdb -O0 $(CFLAGS)
+  JUCE_CFLAGS += $(JUCE_CPPFLAGS) $(TARGET_ARCH) -fPIC -g -ggdb -O3 $(CFLAGS)
   JUCE_CXXFLAGS += $(JUCE_CFLAGS) -std=c++17 $(CXXFLAGS)
   JUCE_LDFLAGS += $(TARGET_ARCH) -L$(JUCE_BINDIR) -L$(JUCE_LIBDIR) $(shell $(PKG_CONFIG) --libs alsa freetype2 fontconfig) -fvisibility=hidden -lrt -ldl -lpthread $(LDFLAGS)
 
