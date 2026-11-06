@@ -8,7 +8,23 @@ on:
   workflow_dispatch:
 
 jobs:
+  dsp-tests:
+    # Fast engine checks on Linux with clang and fused multiply-add (the same maths Apple Silicon uses)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Engine tests, curve accuracy, automation fuzz (no NaN allowed)
+        run: |
+          cd tests/dsp
+          clang++ -O3 -std=c++17 -march=haswell engine_test.cpp -o engine_test && ./engine_test
+          clang++ -O3 -std=c++17 -march=haswell curve_test.cpp -o curve_test && ./curve_test
+          clang++ -O3 -std=c++17 -march=haswell nan_probe.cpp -o nan_probe && ./nan_probe | tee nan.txt
+          clang++ -O3 -std=c++17 -march=haswell fuzz.cpp -o fuzz && ./fuzz | tee fuzz.txt
+          ! grep -E "[1-9][0-9]* bad" nan.txt
+          grep -q "EQ 0, Glue 0" fuzz.txt
+
   mac:
+    needs: dsp-tests
     runs-on: macos-15
     timeout-minutes: 90
     strategy:

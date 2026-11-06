@@ -63,7 +63,9 @@ inline Biquad matched2 (const Analog2& h, double fs, double wMatch)
     const double r0 = std::sqrt (std::max (0.0, B0)), r1 = std::sqrt (std::max (0.0, B1));
     const double W = 0.5 * (r0 + r1);
     B2 = std::max (B2, -W * W);                       // keep it realisable
-    q.b0 = 0.5 * (W + std::sqrt (W * W + B2));
+    // W*W + B2 is exactly 0 for cuts and notches; with fused multiply-add (Apple Silicon)
+    // it can round to a tiny negative number, so clamp before the square root.
+    q.b0 = 0.5 * (W + std::sqrt (std::max (0.0, W * W + B2)));
     q.b1 = 0.5 * (r0 - r1);
     q.b2 = q.b0 > 1e-30 ? -B2 / (4.0 * q.b0) : 0.0;
     return q;
