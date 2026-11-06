@@ -1,0 +1,7 @@
+Builds/**/build/
+*/Builds/**/build/
+**/xcuserdata/
+**/*.xcworkspace/xcuserdata/
+.DS_Store
+build/
+build9/
