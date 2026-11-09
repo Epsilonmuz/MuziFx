@@ -688,14 +688,8 @@ void MuziEqEditor::paint (juce::Graphics& g)
 {
     g.fillAll (col::bg0);
     // header
-    g.setColour (col::accent);
-    g.setFont (font (22.0f * s, true, 0.14f));
-    g.drawText ("MUZI", sc (20, 12, 80, 32), juce::Justification::centredLeft);
-    g.setColour (col::text);
-    g.drawText ("EQ", sc (96, 12, 60, 32), juce::Justification::centredLeft);
-    g.setColour (col::faint);
-    g.setFont (font (10.0f * s, true, 0.1f));
-    g.drawText ("ANALOG-MATCHED", sc (136, 18, 140, 20), juce::Justification::centredLeft);
+    epsilon_ui::drawProductMark (g, sc (20, 13, 1, 1).getPosition().toFloat(), s, epsilon_ui::Tier::Muzi, "EQ", "Analog-matched",
+                                 [] (float h, bool b) { return font (h, b); });
 
 
     for (auto r : { stripBand, stripOut })

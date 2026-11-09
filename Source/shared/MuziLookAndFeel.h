@@ -1,21 +1,26 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
+#include "../../Shared/epsilon_ui/EpsilonPalette.h"
+#include "../../Shared/epsilon_ui/EpsilonHeader.h"
 
 namespace muzi::ui
 {
 // ---- palette (one place to re-skin the whole plugin)
 namespace col
 {
-    const juce::Colour bg0     { 0xff0d0f13 };   // window
-    const juce::Colour bg1     { 0xff14171d };   // panels
-    const juce::Colour bg2     { 0xff1b1f27 };   // raised
-    const juce::Colour line    { 0xff262b35 };
-    const juce::Colour text    { 0xffe7eaf0 };
-    const juce::Colour quiet   { 0xff8d95a5 };
-    const juce::Colour faint   { 0xff5b6373 };
-    const juce::Colour accent  { 0xff38d3c5 };   // the cut
-    const juce::Colour amber   { 0xfff2b84b };   // broad layer, range handles
-    const juce::Colour red     { 0xffef5a5f };
+    // Epsilon Sounds design system v1 - Muzi (premium) tier. Champagne = live / active only.
+    inline const epsilon_ui::Palette brand = epsilon_ui::palette (epsilon_ui::Tier::Muzi);
+    const juce::Colour bg0     = brand.bg;          // window
+    const juce::Colour bg1     = brand.surface;     // panels
+    const juce::Colour bg2     = brand.raised;      // raised
+    const juce::Colour line    = brand.line;
+    const juce::Colour text    = brand.ink;
+    const juce::Colour quiet   = brand.inkMuted;
+    const juce::Colour faint   = epsilon_ui::faint (brand);
+    const juce::Colour accent  = brand.live;        // the cut
+    const juce::Colour amber   = brand.meterHot;    // broad layer, range handles
+    const juce::Colour red     = brand.meterClip;
+    const juce::Colour trim    = brand.trim;        // brushed gold: wordmark and hallmark only
 }
 
 inline juce::Font font (float size, bool bold = false, float kerning = 0.0f)
