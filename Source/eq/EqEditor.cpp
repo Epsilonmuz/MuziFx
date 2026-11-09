@@ -688,7 +688,7 @@ void MuziEqEditor::paint (juce::Graphics& g)
 {
     g.fillAll (col::bg0);
     // header
-    epsilon_ui::drawProductMark (g, sc (20, 13, 1, 1).getPosition().toFloat(), s, epsilon_ui::Tier::Muzi, "EQ", "Analog-matched",
+    epsilon_ui::drawProductMark (g, sc (20, 13, 1, 1).getPosition().toFloat(), s, epsilon_ui::Tier::Muzi, "EQ", {},
                                  [] (float h, bool b) { return font (h, b); });
 
 

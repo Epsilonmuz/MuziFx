@@ -18,7 +18,7 @@ namespace col
     const juce::Colour quiet   = brand.inkMuted;
     const juce::Colour faint   = epsilon_ui::faint (brand);
     const juce::Colour accent  = brand.live;        // the cut
-    const juce::Colour amber   = brand.meterHot;    // broad layer, range handles
+    const juce::Colour amber   = brand.meterOk;     // broad layer, range handles (green: must differ from the champagne cut)
     const juce::Colour red     = brand.meterClip;
     const juce::Colour trim    = brand.trim;        // brushed gold: wordmark and hallmark only
 }
