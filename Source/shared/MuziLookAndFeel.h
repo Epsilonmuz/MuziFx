@@ -2,6 +2,7 @@
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Shared/epsilon_ui/EpsilonPalette.h"
 #include "../../Shared/epsilon_ui/EpsilonDialFont.h"
+#include "../../Shared/epsilon_ui/EpsilonSignature.h"
 #include "../../Shared/epsilon_ui/EpsilonHeader.h"
 
 namespace muzi::ui
@@ -54,69 +55,35 @@ public:
         setColour (juce::TextButton::textColourOnId, col::accent);
     }
 
-    // ---- knobs: dark body, value arc with soft glow, pointer
+    // ---- knobs: the Epsilon Sounds signature coin-edge knob (static layers cached)
     void drawRotarySlider (juce::Graphics& g, int x, int y, int w, int h, float pos,
-                           float a0, float a1, juce::Slider& s) override
+                           float, float, juce::Slider& s) override
     {
-        const auto b = juce::Rectangle<float> ((float) x, (float) y, (float) w, (float) h).reduced (4.0f * scale);
-        const float r = juce::jmin (b.getWidth(), b.getHeight()) * 0.5f;
-        const auto c = b.getCentre();
-        const float ang = a0 + pos * (a1 - a0);
-        const float trackW = juce::jmax (2.0f, r * 0.075f);
-        const bool bipolar = s.getProperties().getWithDefault ("bipolar", false);
-        const bool hot = s.isMouseOverOrDragging();
-
-        juce::Path track;
-        track.addCentredArc (c.x, c.y, r - trackW, r - trackW, 0.0f, a0, a1, true);
-        g.setColour (col::line);
-        g.strokePath (track, juce::PathStrokeType (trackW, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
-
-        const float from = bipolar ? (a0 + a1) * 0.5f : a0;
-        if (std::abs (ang - from) > 0.001f)
-        {
-            juce::Path val;
-            val.addCentredArc (c.x, c.y, r - trackW, r - trackW, 0.0f, juce::jmin (from, ang), juce::jmax (from, ang), true);
-            g.setColour (col::accent.withAlpha (hot ? 0.28f : 0.16f));
-            g.strokePath (val, juce::PathStrokeType (trackW * 3.2f, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
-            g.setColour (col::accent);
-            g.strokePath (val, juce::PathStrokeType (trackW, juce::PathStrokeType::curved, juce::PathStrokeType::rounded));
-        }
-
-        const float br = r * 0.70f;
-        juce::ColourGradient body (col::bg2.brighter (0.18f), c.x, c.y - br, col::bg1.darker (0.2f), c.x, c.y + br, false);
-        g.setGradientFill (body);
-        g.fillEllipse (c.x - br, c.y - br, br * 2, br * 2);
-        g.setColour (juce::Colours::black.withAlpha (0.5f));
-        g.drawEllipse (c.x - br, c.y - br, br * 2, br * 2, 1.0f);
-        g.setColour (juce::Colours::white.withAlpha (0.06f));
-        g.drawEllipse (c.x - br + 1, c.y - br + 1, br * 2 - 2, br * 2 - 2, 1.0f);
-
-        const auto p0 = c.getPointOnCircumference (br * 0.30f, ang);
-        const auto p1 = c.getPointOnCircumference (br * 0.82f, ang);
-        g.setColour (col::text);
-        g.drawLine ({ p0, p1 }, juce::jmax (2.0f, r * 0.06f));
+        epsilon_ui::signature::knob (g, juce::Rectangle<float> ((float) x, (float) y, (float) w, (float) h).reduced (4.0f * scale),
+                                     pos, s, epsilon_ui::Tier::Muzi);
     }
 
-    // ---- pill toggles (Delta) and segmented buttons (Mode)
+    // ---- toggles: signature keycaps with a lume bar; segmented groups (edges) get segment caps
     void drawButtonBackground (juce::Graphics& g, juce::Button& b, const juce::Colour&, bool over, bool down) override
     {
-        auto r = b.getLocalBounds().toFloat().reduced (0.5f);
-        const bool on = b.getToggleState();
-        const float rad = r.getHeight() * 0.5f;
+        const auto pal = epsilon_ui::palette (epsilon_ui::Tier::Muzi);
         const int edges = (int) b.getProperties().getWithDefault ("edges", 0);   // 1 = left end, 2 = right end, 3 = middle
-        const bool left = edges == 0 || edges == 1, right = edges == 0 || edges == 2;
+        if (edges == 0) { epsilon_ui::signature::keycap (g, b, over, down, epsilon_ui::Tier::Muzi); return; }
+        auto r = b.getLocalBounds().toFloat().reduced (0.5f);
+        const float rad = juce::jmin (7.0f, r.getHeight() * 0.25f);
+        const bool roundL = edges == 1, roundR = edges == 2;
         juce::Path p;
-        p.addRoundedRectangle (r.getX(), r.getY(), r.getWidth(), r.getHeight(), rad, rad, left, right, left, right);
-        g.setColour (on ? col::accent.withAlpha (0.16f) : col::bg2.brighter (over ? 0.08f : 0.0f).darker (down ? 0.1f : 0.0f));
-        g.fillPath (p);
-        g.setColour (on ? col::accent.withAlpha (0.7f) : col::line);
-        g.strokePath (p, juce::PathStrokeType (1.0f));
+        p.addRoundedRectangle (r.getX(), r.getY(), r.getWidth(), r.getHeight(), rad, rad, roundL, roundR, roundL, roundR);
+        g.setColour (pal.bg); g.fillPath (p);
+        g.setColour (pal.line); g.strokePath (p, juce::PathStrokeType (1.0f));
+        epsilon_ui::controls::State st; st.on = b.getToggleState(); st.hover = over; st.pressed = down;
+        epsilon_ui::controls::drawSegment (g, r, pal, st);
     }
     void drawButtonText (juce::Graphics& g, juce::TextButton& b, bool, bool) override
     {
         g.setFont (font (11.0f * scale, true, 0.08f));
-        g.setColour (b.getToggleState() ? col::accent : col::quiet);
-        g.drawText (b.getButtonText(), b.getLocalBounds(), juce::Justification::centred);
+        g.setColour (b.isEnabled() ? (b.getToggleState() ? epsilon_ui::palette (epsilon_ui::Tier::Muzi).live : col::quiet) : col::faint);
+        g.drawText (b.getButtonText(), b.getLocalBounds().withTrimmedBottom (3), juce::Justification::centred);
     }
 
     void drawComboBox (juce::Graphics& g, int w, int h, bool, int, int, int, int, juce::ComboBox& cb) override
