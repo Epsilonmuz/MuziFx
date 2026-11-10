@@ -137,6 +137,7 @@
 		E9DFF80EB66D3825E93DFDF3 /* WebKit.framework */ = {isa = PBXBuildFile; fileRef = F81C38F6EC0DFAE08033CF47; };
 		EC09C3450C76DD17D113814E /* include_juce_core_CompilationTime.cpp */ = {isa = PBXBuildFile; fileRef = F603A3A573BCE7B59D418C5B; };
 		F052ACA50C3609647BFF5E39 /* CoreMIDI.framework */ = {isa = PBXBuildFile; fileRef = DC592A6F9CA977CD58C43E31; };
+		F087FA5CAF837D212F404339 /* AppIcon.icns */ = {isa = PBXBuildFile; fileRef = 6FEDD22DE4A44ED3B22696B0; };
 		F20FC70F15969214CA54B26B /* include_juce_graphics_libwebp_dsp_dec_avx2.c */ = {isa = PBXBuildFile; fileRef = 2C91728655D777280A91209D; };
 		F3F4A76E0243736A1D175E75 /* include_juce_audio_devices.mm */ = {isa = PBXBuildFile; fileRef = C33935744864A03BBFC9C74C; };
 /* End PBXBuildFile section */
@@ -187,12 +188,14 @@
 		6A9168FE91496923DB56E806 /* CoreAudioKit.framework */ /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
 		6D523FEDE23ABA452B8D9270 /* MuziLookAndFeel.h */ /* MuziLookAndFeel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MuziLookAndFeel.h; path = ../../../Source/shared/MuziLookAndFeel.h; sourceTree = SOURCE_ROOT; };
 		6E649B8B2D2DB08484D065B4 /* CoreAudio.framework */ /* CoreAudio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudio.framework; path = System/Library/Frameworks/CoreAudio.framework; sourceTree = SDKROOT; };
+		6FEDD22DE4A44ED3B22696B0 /* AppIcon.icns */ /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = file.icns; name = AppIcon.icns; path = AppIcon.icns; sourceTree = SOURCE_ROOT; };
 		71E737EFB116FFADCF340807 /* include_juce_dsp.mm */ /* include_juce_dsp.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_dsp.mm; path = ../../JuceLibraryCode/include_juce_dsp.mm; sourceTree = SOURCE_ROOT; };
 		72A1F4D62E442B92E1CE3C3A /* Info-VST3_Manifest_Helper.plist */ /* Info-VST3_Manifest_Helper.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Info-VST3_Manifest_Helper.plist"; path = "Info-VST3_Manifest_Helper.plist"; sourceTree = SOURCE_ROOT; };
 		73FC5006C526746D8A7BBE80 /* AU */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Muzi Glue.component"; sourceTree = BUILT_PRODUCTS_DIR; };
 		759BE97F010D8EAA5E721585 /* AudioToolbox.framework */ /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		76420C98A0E5511D994CE702 /* include_juce_graphics_libwebp_dsp_dec.c */ /* include_juce_graphics_libwebp_dsp_dec.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = include_juce_graphics_libwebp_dsp_dec.c; path = ../../JuceLibraryCode/include_juce_graphics_libwebp_dsp_dec.c; sourceTree = SOURCE_ROOT; };
 		793BD1E9F712B0EC0EDACC55 /* include_juce_core_zlib.c */ /* include_juce_core_zlib.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = include_juce_core_zlib.c; path = ../../JuceLibraryCode/include_juce_core_zlib.c; sourceTree = SOURCE_ROOT; };
+		7BACE1F715AC1667B13B321C /* MuziGlue-Icon.png */ /* MuziGlue-Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "MuziGlue-Icon.png"; path = "../../../Resources/MuziGlue-Icon.png"; sourceTree = SOURCE_ROOT; };
 		80303C3F4FDCFE3600783D38 /* include_juce_audio_formats_flac_1.c */ /* include_juce_audio_formats_flac_1.c */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.c; name = include_juce_audio_formats_flac_1.c; path = ../../JuceLibraryCode/include_juce_audio_formats_flac_1.c; sourceTree = SOURCE_ROOT; };
 		811AE17CBC77CE4801D651DE /* JucePluginDefines.h */ /* JucePluginDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JucePluginDefines.h; path = ../../JuceLibraryCode/JucePluginDefines.h; sourceTree = SOURCE_ROOT; };
 		83BBDEF28CC035384D2DE11A /* MuziWidgets.h */ /* MuziWidgets.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MuziWidgets.h; path = ../../../Source/shared/MuziWidgets.h; sourceTree = SOURCE_ROOT; };
@@ -389,6 +392,14 @@
 			name = "JUCE Library Code";
 			sourceTree = "<group>";
 		};
+		1D756FE1E081031D34CB0173 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				7BACE1F715AC1667B13B321C,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		36C5686134329B64F223CC77 /* JUCE Modules */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +439,7 @@
 			children = (
 				89F2A7DECE69459E8AF216D2,
 				A23B098A45E42A4B2D0E1215,
+				1D756FE1E081031D34CB0173,
 			);
 			name = "Muzi Glue";
 			sourceTree = "<group>";
@@ -463,6 +475,7 @@
 				164CBBD6810FC12DFEA8DF12,
 				72A1F4D62E442B92E1CE3C3A,
 				2A922EAA6403A865A77786B9,
+				6FEDD22DE4A44ED3B22696B0,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -768,6 +781,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40CF31A79FFF03A6797A939E,
+				F087FA5CAF837D212F404339,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -776,6 +790,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40CF31A79FFF03A6797A939E,
+				F087FA5CAF837D212F404339,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -784,6 +799,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				40CF31A79FFF03A6797A939E,
+				F087FA5CAF837D212F404339,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

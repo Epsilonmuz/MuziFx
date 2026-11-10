@@ -1,6 +1,7 @@
 #pragma once
 #include <juce_gui_basics/juce_gui_basics.h>
 #include "../../Shared/epsilon_ui/EpsilonPalette.h"
+#include "../../Shared/epsilon_ui/EpsilonDialFont.h"
 #include "../../Shared/epsilon_ui/EpsilonHeader.h"
 
 namespace muzi::ui
@@ -25,7 +26,7 @@ namespace col
 
 inline juce::Font font (float size, bool bold = false, float kerning = 0.0f)
 {
-    auto f = juce::Font (juce::FontOptions (size, bold ? juce::Font::bold : juce::Font::plain));
+    auto f = epsilon_ui::dial::font (size, bold);   // Epsilon Dial, the house typeface
     return kerning > 0.0f ? f.withExtraKerningFactor (kerning) : f;
 }
 

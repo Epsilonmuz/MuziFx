@@ -8,6 +8,9 @@
     <Filter Include="Muzi EQ\Shared">
       <UniqueIdentifier>{950D4F3C-C01D-801F-3D61-6C2B7A34D2F0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Muzi EQ\Resources">
+      <UniqueIdentifier>{9A109B20-801F-F707-29F0-8B85EBCEB8F0}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Muzi EQ">
       <UniqueIdentifier>{69528933-1CFB-81AF-FBDB-881335A7F4E3}</UniqueIdentifier>
     </Filter>
@@ -9860,6 +9863,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\Resources\MuziEQ-Icon.png">
+      <Filter>Muzi EQ\Resources</Filter>
+    </None>
     <None Include="..\..\..\JUCE\modules\juce_audio_devices\native\asio\LICENSE.txt">
       <Filter>JUCE Modules\juce_audio_devices\native\asio</Filter>
     </None>
@@ -9985,6 +9991,9 @@
     </None>
     <None Include="..\..\..\JUCE\modules\juce_gui_extra\native\typescript\webview-interop\README.md">
       <Filter>JUCE Modules\juce_gui_extra\native\typescript\webview-interop</Filter>
+    </None>
+    <None Include=".\icon.ico">
+      <Filter>JUCE Library Code</Filter>
     </None>
   </ItemGroup>
 </Project>

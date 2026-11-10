@@ -8,6 +8,9 @@
     <Filter Include="Muzi Glue\Shared">
       <UniqueIdentifier>{9FC7D615-7142-E219-4ACD-423D55C6D202}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Muzi Glue\Resources">
+      <UniqueIdentifier>{2305ED4E-5876-13CE-E815-E6C334D5B062}</UniqueIdentifier>
+    </Filter>
     <Filter Include="Muzi Glue">
       <UniqueIdentifier>{7E7615D4-4E7C-1EE5-449F-2A4BE1C1ABEF}</UniqueIdentifier>
     </Filter>
@@ -9860,6 +9863,9 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\..\Resources\MuziGlue-Icon.png">
+      <Filter>Muzi Glue\Resources</Filter>
+    </None>
     <None Include="..\..\..\JUCE\modules\juce_audio_devices\native\asio\LICENSE.txt">
       <Filter>JUCE Modules\juce_audio_devices\native\asio</Filter>
     </None>
@@ -9985,6 +9991,9 @@
     </None>
     <None Include="..\..\..\JUCE\modules\juce_gui_extra\native\typescript\webview-interop\README.md">
       <Filter>JUCE Modules\juce_gui_extra\native\typescript\webview-interop</Filter>
+    </None>
+    <None Include=".\icon.ico">
+      <Filter>JUCE Library Code</Filter>
     </None>
   </ItemGroup>
 </Project>

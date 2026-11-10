@@ -30,6 +30,7 @@ set(MZ_DEFS JUCE_WEB_BROWSER=0 JUCE_USE_CURL=0 JUCE_VST3_CAN_REPLACE_VST2=0 JUCE
 juce_add_plugin(MuziEQ
     COMPANY_NAME "Muzi"
     PRODUCT_NAME "Muzi EQ"
+    ICON_BIG "${CMAKE_CURRENT_SOURCE_DIR}/Resources/MuziEQ-Icon.png"
     VERSION 0.1.0
     PLUGIN_MANUFACTURER_CODE Muzi
     PLUGIN_CODE MzEq
@@ -50,6 +51,7 @@ target_link_libraries(MuziEQ PRIVATE juce::juce_audio_utils juce::juce_dsp
 juce_add_plugin(MuziGlue
     COMPANY_NAME "Muzi"
     PRODUCT_NAME "Muzi Glue"
+    ICON_BIG "${CMAKE_CURRENT_SOURCE_DIR}/Resources/MuziGlue-Icon.png"
     VERSION 0.1.0
     PLUGIN_MANUFACTURER_CODE Muzi
     PLUGIN_CODE MzGl
