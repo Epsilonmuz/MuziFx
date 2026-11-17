@@ -2,6 +2,11 @@
 
 Two JUCE plugins (VST3 / AU / Standalone) built on the Muzi Tame framework. Clean by default, with an optional **Color** stage on both.
 
+## Install (no build needed)
+
+**Mac (Intel and Apple Silicon):** download [Muzi EQ for Mac](https://github.com/Epsilonmuz/MuziFx/releases/latest/download/Muzi-EQ-macOS-Installer.pkg) · [Muzi Glue for Mac](https://github.com/Epsilonmuz/MuziFx/releases/latest/download/Muzi-Glue-macOS-Installer.pkg). Double-click it: the VST3 goes to `/Library/Audio/Plug-Ins/VST3`, the Audio Unit to `/Library/Audio/Plug-Ins/Components` and the standalone app to Applications. Then rescan in your DAW (FL Studio: Options > Manage plugins > Find installed plugins). The first time, macOS may say it can't check the installer (it isn't notarised by Apple): click Done, then System Settings > Privacy & Security > **Open Anyway**. No Terminal commands needed. The link always gives the newest build of `main`; it is rebuilt, test-installed on GitHub's Mac and replaced on every push.
+
+
 | Muzi EQ | Muzi Glue |
 |---|---|
 | ![Muzi EQ](screenshot_eq.png) | ![Muzi Glue](screenshot_glue.png) |
